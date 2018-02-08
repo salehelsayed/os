@@ -6,7 +6,11 @@ filetype plugin indent on
 let g:indentLine_char = '.' 
 
 " nerdtree key (F6)
-nmap <F6> :NERDTreeToggle<CR>
+" default config --> nmap <F6> :NERDTreeToggle<CR>
+" mapping to Ctrl+D in "n" normal mode
+nmap <silent> <C-D> :NERDTreeToggle<CR>
+" To prevent looping
+nnoremap <silent> <C-L> :noh<CR><C-L>
 
 " have numbers by defualt
  set number
@@ -17,7 +21,54 @@ nmap <F6> :NERDTreeToggle<CR>
 " mapping F3 and F4 for numbers.vim
  nnoremap <F3> :NumbersToggle<CR>
  nnoremap <F4> :NumbersOnOff<CR>
+ 
+" Navigate between windows (1)
+set wmh=0
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+set wmh=0
+nmap <c-h> <c-w>h<c-w><Bar>
+nmap <c-l> <c-w>l<c-w><Bar>
 
+" Navigate between windows (2)
+" map <C-J> <C-W>j<C-W>
+" map <C-K> <C-W>k<C-W>
+" nmap <c-h> <c-w>h<c-w>
+" nmap <c-l> <c-w>l<c-w>
+
+
+" move between windows
+" Switch window mappings /*{{{*/
+"nnoremap <A-Up> :normal <c-r>=SwitchWindow('+')<CR><CR>
+"nnoremap <A-Down> :normal <c-r>=SwitchWindow('-')<CR><CR>
+"nnoremap <A-Left> :normal <c-r>=SwitchWindow('<')<CR><CR>
+"nnoremap <A-Right> :normal <c-r>=SwitchWindow('>')<CR><CR>
+
+function! SwitchWindow(dir)
+  let this = winnr()
+  if '+' == a:dir
+    execute "normal \<c-w>k"
+    elseif '-' == a:dir
+    execute "normal \<c-w>j"
+    elseif '>' == a:dir
+    execute "normal \<c-w>l"
+    elseif '<' == a:dir
+    execute "normal \<c-w>h"
+  else
+    echo "oops. check your ~/.vimrc"
+    return ""
+  endif
+endfunction
+" /*}}}*/
+
+" configurations for vimwiki
+set nocompatible
+call pathogen#helptags()
+" Configurations for vimwiki_markdown
+let g:vimwiki_list = [{'path': '~/vimwiki', 'template_path': '~/vimwiki/templates/',
+          \ 'template_default': 'default', 'syntax': 'markdown', 'ext': '.md',
+          \ 'path_html': '~/vimwiki/site_html/', 'custom_wiki2html': 'vimwiki_markdown',
+          \ 'template_ext': '.tpl'}]
 
  nmap <silent> <A-Up> :wincmd k<CR>
  nmap <silent> <A-Down> :wincmd j<CR>
@@ -26,10 +77,5 @@ nmap <F6> :NERDTreeToggle<CR>
 
 
 
-" Navigate between windows
- map <C-J> <C-W>j<C-W>
- map <C-K> <C-W>k<C-W>
- nmap <c-h> <c-w>h<c-w>
- nmap <c-l> <c-w>l<c-w>
 
-" Snippets
+

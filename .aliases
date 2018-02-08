@@ -1,0 +1,7 @@
+
+alias gen='nohup rdesktop -k en -g 1920x1020 -r disk:home=/home/saleh/share -u SYSS\\selsayed wts01.syss.intern > /home/saleh/nohup.out &'
+
+alias bs='nohup java -Djsse.enableSNIExtension=false -jar -Xmx2500M -XX:MaxPermSize=1G -XX:+UseConcMarkSweepGC /home/saleh/Downloads/Burp/burpsuite_pro_v1.7.31.jar --config-file=/usr/share/burp/sysscollaborator.config.json > /home/saleh/nohup.out &' 
+
+alias ssheng='ssh projects.syss.intern "grep -p *.tex -i -A 1000 ',english' reports" | grep -i -B 10 -A 20 --color'
+

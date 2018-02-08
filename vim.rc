@@ -1,0 +1,35 @@
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
+"indentation
+let g:indentLine_char = '.' 
+
+" nerdtree key (F6)
+nmap <F6> :NERDTreeToggle<CR>
+
+" have numbers by defualt
+ set number
+
+" exclude numbers.vim from the following
+ let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl', 'nerdtree']
+
+" mapping F3 and F4 for numbers.vim
+ nnoremap <F3> :NumbersToggle<CR>
+ nnoremap <F4> :NumbersOnOff<CR>
+
+
+ nmap <silent> <A-Up> :wincmd k<CR>
+ nmap <silent> <A-Down> :wincmd j<CR>
+ nmap <silent> <A-Left> :wincmd h<CR>
+ nmap <silent> <A-Right> :wincmd l<CR>
+
+
+
+" Navigate between windows
+ map <C-J> <C-W>j<C-W>
+ map <C-K> <C-W>k<C-W>
+ nmap <c-h> <c-w>h<c-w>
+ nmap <c-l> <c-w>l<c-w>
+
+" Snippets
